@@ -1,4 +1,8 @@
 (function(){
+	var controller = {
+		init: function () {	gps.init();	}
+	}
+
 	var gps = {
 		init: function () { },
 		startInterval: function () { },
