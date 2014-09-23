@@ -1,0 +1,17 @@
+.about{
+	display: none;
+}
+.movies{
+	display: none;
+}
+section.active{
+	display: block;
+}
+.movies article{
+	float: left;
+	width: 300px;
+}
+img{
+	width: 60%;
+	height: 60%;
+}
