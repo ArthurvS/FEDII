@@ -46,14 +46,14 @@ window.onload = function(){
 			Transparency.render(document.querySelector(".movies"), movieApp.content.movies, movieApp.movieDirectives);
 		},
 		toggle: function (show, hide) {
-			var show = utils.getOne("." + show);
-			var hide = utils.getOne("." + hide);
+			var show = queryUtils.getOne("." + show);
+			var hide = queryUtils.getOne("." + hide);
 			show.classList.add('active');
 			hide.classList.remove('active');			
 		} 
 	};
 
-	var utils = {
+	var queryUtils = {
 		getOne: function(el){
 			return document.querySelector(el);
 		},
