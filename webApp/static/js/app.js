@@ -46,11 +46,20 @@ window.onload = function(){
 			Transparency.render(document.querySelector(".movies"), movieApp.content.movies, movieApp.movieDirectives);
 		},
 		toggle: function (show, hide) {
-			var show = document.querySelector("." + show);
-			var hide = document.querySelector("." + hide);
+			var show = utils.getOne("." + show);
+			var hide = utils.getOne("." + hide);
 			show.classList.add('active');
 			hide.classList.remove('active');			
 		} 
+	};
+
+	var utils = {
+		getOne: function(el){
+			return document.querySelector(el);
+		},
+		getMultiple: function (el){
+			return document.querySelectorAll(el);
+		}		
 	};
 
 	// initiate controller
