@@ -1,8 +1,13 @@
 (function () {
+	if (!localStorage.getItem("movies")) {
+		console.log("Data ophalen en in localstorage plaatsen");
+		xhr.trigger("get", movieApp.config.dataUrl, function (e) {
+			localStorage.setItem("movies", e);	
+		}, null);
+	};
 
-	xhr.trigger("get", "http://dennistel.nl/movies", function (e) {
-		movieApp.content.movies = JSON.parse(e);
-		movieApp.controller.init();
-	}, null);
+	movieApp.content.movies = JSON.parse(localStorage.getItem("movies"));
+	movieApp.controller.init();
+	
 
 })();

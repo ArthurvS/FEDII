@@ -1,5 +1,7 @@
 var movieApp = movieApp || { }; // namespace
-window.onload = function(){
+
+(function(){
+
 
 	//app controller
 	//initiate application
@@ -11,6 +13,9 @@ window.onload = function(){
 		}
 	};
 
+	movieApp.config = {
+		dataUrl: "http://dennistel.nl/movies"
+	};
 	// Router object
 	// sets router parameters
 
@@ -62,4 +67,4 @@ window.onload = function(){
 		}		
 	};
 
-};
+})();

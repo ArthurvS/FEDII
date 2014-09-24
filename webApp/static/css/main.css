@@ -9,7 +9,8 @@ section.active{
 }
 .movies article{
 	float: left;
-	width: 300px;
+	width: 20%;
+	margin-left: 1em;
 }
 img{
 	width: 60%;

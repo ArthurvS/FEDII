@@ -1,3 +1,4 @@
+var movieApp = movieApp || { }; // namespace
 (function(){
 	movieApp.content = {
 		about: {
