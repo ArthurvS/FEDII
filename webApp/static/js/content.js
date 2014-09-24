@@ -18,12 +18,12 @@
 	        src: function() { return this.cover; }
 	     },
 	    myHtml: {
-	    	html: function () { return [this.releaseDate]; }
+	    	html: function () { return this.releaseDate; }
 	    }
   	};
   	movieApp.aboutDirectives = {
 	    myHtml: {
-	    	html: function () { return [this.description]; }
+	    	html: function () { return this.description; }
 	    }
   	};
 }());

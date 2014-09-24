@@ -4,7 +4,7 @@ window.onload = function(){
 	//app controller
 	//initiate application
 
-	var controller = {
+	movieApp.controller = {
 		init:function () {
 			router.init();
 			sections.init();
@@ -62,6 +62,4 @@ window.onload = function(){
 		}		
 	};
 
-	// initiate controller
-	controller.init();
 };
