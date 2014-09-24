@@ -1,5 +1,8 @@
-var CL4P = CL4P || { };
+var movieApp = movieApp || { }; // namespace
 window.onload = function(){
+
+	//app controller
+	//initiate application
 
 	var controller = {
 		init:function () {
@@ -8,20 +11,28 @@ window.onload = function(){
 		}
 	};
 
+	// Router object
+	// sets router parameters
+
 	var router = {
 		init: function () {
 			routie({
 	    		about: function() {
 	    			sections.about();
-	    			sections.toggle(".about", ".movies");
+	    			sections.toggle("about", "movies");
 	    		},
 	    		movies: function() {
 	    			sections.movies();
-	    			sections.toggle(".movies", ".about");
+	    			sections.toggle("movies", "about");
 	    		}
 			});
 		}
 	};
+
+
+	// Sections Object
+	// Sets templater
+	// toggle's sections
 
 	var sections = {
 		init: function () {
@@ -29,17 +40,19 @@ window.onload = function(){
 			this.movies();
 		},
 		about: function () {
-			Transparency.render(document.querySelector(".about"), CL4P.content.about, CL4P.aboutDirectives);
+			Transparency.render(document.querySelector(".about"), movieApp.content.about, movieApp.aboutDirectives);
 		},
 		movies: function () {
-			Transparency.render(document.querySelector(".movies"), CL4P.content.movies, CL4P.movieDirectives);
+			Transparency.render(document.querySelector(".movies"), movieApp.content.movies, movieApp.movieDirectives);
 		},
 		toggle: function (show, hide) {
-			var show = document.querySelector(show);
-			var hide = document.querySelector(hide);
+			var show = document.querySelector("." + show);
+			var hide = document.querySelector("." + hide);
 			show.classList.add('active');
 			hide.classList.remove('active');			
 		} 
 	};
+
+	// initiate controller
 	controller.init();
 };

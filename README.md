@@ -9,3 +9,4 @@ Best Practices:
 - Indenting
 - Content seperated from main code
 - !Global variables or functions
+- Double qoute string
