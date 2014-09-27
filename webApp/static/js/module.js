@@ -5,7 +5,6 @@
 			localStorage.setItem("movies", e);	
 		}, null);
 	};
-
 	movieApp.content.movies = JSON.parse(localStorage.getItem("movies"));
 	movieApp.controller.init();
 	
