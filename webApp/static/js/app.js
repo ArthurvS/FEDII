@@ -1,15 +1,12 @@
 var movieApp = movieApp || { }; // namespace
 
 (function(){
-
-
 	//app controller
 	//initiate application
-
 	movieApp.controller = {
 		init:function () {
+			movieApp.movies.init();
 			router.init();
-			sections.init();
 		}
 	};
 
@@ -23,23 +20,23 @@ var movieApp = movieApp || { }; // namespace
 		init: function () {
 			routie({
 	    		about: function() {
-	    			sections.about();
-	    			sections.toggle("about", "movies");
+	    			movieApp.sections.about();
+	    			movieApp.sections.toggle("about", "movies");
 	    		},
 	    		movies: function() {
-	    			sections.movies();
-	    			sections.toggle("movies", "about");
+	    			movieApp.sections.movies();
+	    			movieApp.sections.toggle("movies", "about");
 	    		}
 			});
 		}
 	};
 
 
-	// Sections Object
+	// movieApp.Sections Object
 	// Sets templater
-	// toggle's sections
+	// toggle's movieApp.sections
 
-	var sections = {
+	movieApp.sections = {
 		init: function () {
 			this.about();
 			this.movies();
@@ -48,7 +45,7 @@ var movieApp = movieApp || { }; // namespace
 			Transparency.render(document.querySelector(".about"), movieApp.content.about, movieApp.aboutDirectives);
 		},
 		movies: function () {
-			Transparency.render(document.querySelector(".movies"), movieApp.content.movies, movieApp.movieDirectives);
+			Transparency.render(document.querySelector(".movies"), movieApp.movies.content, movieApp.movieDirectives);
 		},
 		toggle: function (show, hide) {
 			var show = queryUtils.getOne("." + show);
@@ -67,4 +64,5 @@ var movieApp = movieApp || { }; // namespace
 		}		
 	};
 
+	movieApp.controller.init();
 })();
