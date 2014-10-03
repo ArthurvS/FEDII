@@ -2,7 +2,7 @@ var movieApp = movieApp || { }; // namespace
 (function(){
 	movieApp.movies = {
 		init: function(){
-			if (localStorage.getItem("movies") || getViaAjax()){
+			if (localStorage.getItem("movies") || this.getViaAjax()){
 				this.content = this.getViaLocalStorage();
 				movieApp.sections.init();
 			}								
@@ -11,10 +11,11 @@ var movieApp = movieApp || { }; // namespace
 			return JSON.parse(localStorage.getItem("movies"));
 		},
 		getViaAjax: function(){
+			var self = this;
 			console.log("Data ophalen en in localstorage plaatsen");
 			var module = new Worker("static/js/module.js");
 			module.onmessage = function(){				
-				return setLocalStorage("movies", module);
+				return self.setLocalStorage("movies", module);
 			};
 		},
 		setLocalStorage: function(name, value) {
