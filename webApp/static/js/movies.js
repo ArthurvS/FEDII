@@ -4,7 +4,7 @@ var movieApp = movieApp || { }; // namespace
 		init: function(){
 			if (localStorage.getItem("movies") || this.getViaAjax()){
 				this.content = this.getViaLocalStorage();
-				movieApp.sections.init();
+				SHOTGUN.fire('getMovies');
 			}								
 		},
 		getViaLocalStorage: function() {
@@ -14,8 +14,8 @@ var movieApp = movieApp || { }; // namespace
 			var self = this;
 			console.log("Data ophalen en in localstorage plaatsen");
 			var module = new Worker("static/js/module.js");
-			module.onmessage = function(){				
-				return self.setLocalStorage("movies", module);
+			module.onmessage = function(event){				
+				return self.setLocalStorage("movies", event.data);
 			};
 		},
 		setLocalStorage: function(name, value) {

@@ -4,9 +4,10 @@ var movieApp = movieApp || { }; // namespace
 	//app controller
 	//initiate application
 	movieApp.controller = {
-		init:function () {
-			movieApp.movies.init();
+		init:function () {			
 			router.init();
+			movieApp.movies.init();
+			SHOTGUN.listen('getMovies', sections.init());
 		}
 	};
 
@@ -20,12 +21,12 @@ var movieApp = movieApp || { }; // namespace
 		init: function () {
 			routie({
 	    		about: function() {
-	    			movieApp.sections.about();
-	    			movieApp.sections.toggle("about", "movies");
+	    			sections.about();
+	    			sections.toggle("about", "movies");
 	    		},
 	    		movies: function() {
-	    			movieApp.sections.movies();
-	    			movieApp.sections.toggle("movies", "about");
+	    			sections.movies();
+	    			sections.toggle("movies", "about");
 	    		}
 			});
 		}
@@ -36,7 +37,7 @@ var movieApp = movieApp || { }; // namespace
 	// Sets templater
 	// toggle's movieApp.sections
 
-	movieApp.sections = {
+	var sections = {
 		init: function () {
 			this.about();
 			this.movies();
