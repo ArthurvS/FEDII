@@ -47,10 +47,10 @@ var movieApp = movieApp || { }; // namespace
 			this.movies();
 		},
 		about: function () {
-			Transparency.render(document.querySelector(".about"), movieApp.content.about, movieApp.aboutDirectives);
+			Transparency.render(document.querySelector(".about"), movieApp.about.content, movieApp.about.directives);
 		},
 		movies: function () {
-			Transparency.render(document.querySelector(".movies"), movieApp.movies.content, movieApp.movieDirectives);
+			Transparency.render(document.querySelector(".movies"), movieApp.movies.content, movieApp.movies.directives);
 		},
 		detail: function(movieID) {
 			Transparency.render(document.querySelector(".detail"), movieApp.movies.content, movieApp.aboutDirectives);
