@@ -20,6 +20,9 @@ var movieApp = movieApp || { }; // namespace
 	     },
 	    myHtml: {
 	    	html: function () { return this.releaseDate; }
+	    },
+	    myLink:{
+	    	href: function() { return "#movies/" + myFunctions.cleanStrings(this.title); }
 	    }
   	};
   	movieApp.aboutDirectives = {

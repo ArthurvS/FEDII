@@ -1,7 +1,10 @@
-.about{
+/*.about{
 	display: none;
 }
 .movies{
+	display: none;
+}*/
+section{
 	display: none;
 }
 section.active{

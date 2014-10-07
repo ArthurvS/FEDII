@@ -8,8 +8,9 @@
         <link rel="stylesheet" href="static/css/main.css">
     </head>
     <body>
-		<main id="content">
-			<section class="about" class="">
+		<main>
+
+			<section class="content about" class="">
 				<section>
 					<header>
 						<h1 data-bind="title"></h1>
@@ -19,7 +20,7 @@
 				</section>
 			</section>
 
-			<section class="movies" class="">	
+			<section class="content movies" class="">	
 				<article>
 					<header>
 						<h1 data-bind="title"></h1>
@@ -29,10 +30,23 @@
 					<figure>
 						<img data-bind="myImg" alt="" />
 					</figure>
-
-					<p data-bind="plot"></p>
+					<a data-bind="myLink">Detail</a>
 				</article>
 			</section>
+
+			<section class="content detail">
+				<header>
+					<h1 data-bind="title"></h1>
+					<em data-bind="myHtml"></em>
+				</header>
+
+				<figure>
+					<img data-bind="myImg" alt="" />
+				</figure>
+
+				<p data-bind="plot"></p>
+			</section>
+
 		</main>
 		
 		<header>
@@ -44,6 +58,7 @@
 			</nav>
 		</header>
 		
+		<script src="static/js/vendor/myFunctions.js"></script>
         <script src="static/js/vendor/xhr.js"></script>
         <script src="static/js/vendor/routie.min.js"></script>
         <script src="static/js/vendor/transparancy.min.js"></script>

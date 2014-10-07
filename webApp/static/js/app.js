@@ -22,11 +22,15 @@ var movieApp = movieApp || { }; // namespace
 			routie({
 	    		about: function() {
 	    			sections.about();
-	    			sections.toggle("about", "movies");
+	    			sections.toggle("about", "content");
 	    		},
 	    		movies: function() {
 	    			sections.movies();
-	    			sections.toggle("movies", "about");
+	    			sections.toggle("movies", "content");
+	    		},
+	    		'movies/*': function(id) {
+	    			sections.detail(id);
+	    			sections.toggle("detail", "content");
 	    		}
 			});
 		}
@@ -48,11 +52,17 @@ var movieApp = movieApp || { }; // namespace
 		movies: function () {
 			Transparency.render(document.querySelector(".movies"), movieApp.movies.content, movieApp.movieDirectives);
 		},
+		detail: function(movieID) {
+			Transparency.render(document.querySelector(".detail"), movieApp.movies.content, movieApp.aboutDirectives);
+		},
 		toggle: function (show, hide) {
 			var show = queryUtils.getOne("." + show);
-			var hide = queryUtils.getOne("." + hide);
-			show.classList.add('active');
-			hide.classList.remove('active');			
+			var hide =  queryUtils.getAll("." + hide);
+			for (var i = 0; i < hide.length; i++) {
+				hide[i].classList.remove('active');
+			};
+
+			show.classList.add('active');				
 		} 
 	};
 
@@ -60,7 +70,7 @@ var movieApp = movieApp || { }; // namespace
 		getOne: function(el){
 			return document.querySelector(el);
 		},
-		getMultiple: function (el){
+		getAll: function (el){
 			return document.querySelectorAll(el);
 		}		
 	};
