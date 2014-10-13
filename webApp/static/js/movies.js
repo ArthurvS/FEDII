@@ -2,25 +2,31 @@ var movieApp = movieApp || { }; // namespace
 (function(){
 	movieApp.movies = {
 		init: function(){
-			if (localStorage.getItem("movies") || this.getViaAjax()){
-				this.content = this.getViaLocalStorage();
+			if (localStorage.getItem("movies")){
+				this.content = this.getFromLocalStorage();
 				SHOTGUN.fire('getMovies');
+			} else {
+				this.getFromAjax();
 			}								
 		},
-		getViaLocalStorage: function() {
+		getFromLocalStorage: function() {
 			return JSON.parse(localStorage.getItem("movies"));
 		},
-		getViaAjax: function(){
+		getFromAjax: function(){
 			var self = this;
 			console.log("Data ophalen en in localstorage plaatsen");
 			var module = new Worker("static/js/module.js");
-			module.onmessage = function(event){				
-				return self.setLocalStorage("movies", event.data);
+			module.onerror = function (event) {
+				console.log(event);
+			};
+			module.onmessage = function(event){
+				self.setLocalStorage("movies", event.data);
 			};
 		},
 		setLocalStorage: function(name, value) {
-			localStorage.setItem(name, value);
-			return true;
+			localStorage.setItem(name, value);			
+			this.content = this.getFromLocalStorage();
+			SHOTGUN.fire('getMovies');
 		},
 		content: [
 			{title:"Shawshank Redemption", releaseDate:"Release date: <time>14 October 1994</time>", description:"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency", cover:"images/shawshank-redemption.jpg"},

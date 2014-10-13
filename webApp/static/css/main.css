@@ -11,11 +11,6 @@ section.active{
 	display: block;
 }
 .movies article{
-	float: left;
-	width: 20%;
-	margin-left: 1em;
 }
 img{
-	width: 60%;
-	height: 60%;
 }
